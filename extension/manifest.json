@@ -16,10 +16,11 @@
     "persistent": false
   },
   "browser_action": {
-    "default_title": "KennyStream EN LIVE !"
+    "default_title": "KennyStream EN LIVE !",
+    "default_popup": "popup.html"
   },
   "icons": {
-    "16": "icons/kenz_off.jpeg",
+    "16": "icons/kenz_off.png",
     "32": "icons/ext_icon32.png",
     "48": "icons/ext_icon48.png",
     "128": "icons/ext_icon128.png"
