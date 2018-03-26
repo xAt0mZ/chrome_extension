@@ -1,0 +1,27 @@
+{
+  "name": "KennyStream EN LIVE !",
+  "description": "L'extension officielle de KennyStream, ne rate aucun de ses lives ni de vidéos grâce à l'extension, télécharge la et deviens content.",
+  "version": "1.0",
+  "manifest_version": 2,
+  "permissions": [
+    "alarms",
+    "notifications",
+    "storage",
+    "http://localhost:3000/"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "browser_action": {
+    "default_title": "KennyStream EN LIVE !",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "icons/kenz_off.png",
+    "32": "icons/ext_icon32.png",
+    "48": "icons/ext_icon48.png",
+    "128": "icons/ext_icon128.png"
+  }
+}

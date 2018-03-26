@@ -1,0 +1,161 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+*
+{
+	font-family:Open Sans, arial;
+	font-style: normal;
+	font-variant: normal;
+	margin:0;
+	padding:0;
+}
+html
+{
+	margin:0;
+	padding:0;
+	background:#17141f;
+	color:white;
+}
+
+a{
+	color:white;
+}
+div#extension-body
+{
+	margin:0 10%;
+	width:80%;
+	text-align:center;
+}
+h1#extension-title
+{
+	font-size:24px;
+    margin: -3px 0 14px 0;
+    text-transform: uppercase;
+}
+div#extension-google
+{
+	display:inline-block;
+	background:#6441a4;
+	width:163px;
+	height:41px;
+	overflow:hidden;
+}
+div#extension-firefox
+{
+	display:inline-block;
+	background:#6441a4;
+	width:163px;
+	height:41px;
+	overflow:hidden;
+}
+div#extension-google:hover
+{
+	background:#a191c6;
+	-webkit-transition: background 200ms;
+    transition: background 200ms;
+}
+div#extension-firefox:hover
+{
+	background:#a191c6;
+	-webkit-transition: background 200ms;
+    transition: background 200ms;
+}
+div#extension-google img
+{
+	max-width:80%;
+	margin-top:5px;
+    margin-left: 2px;
+}
+div#extension-firefox img
+{
+	max-width:80%;
+	margin-top:5px;
+    margin-left: 2px;
+}
+div.extension-left
+{
+	width:40px;
+	height:40px;
+	float:left;
+}
+div.extension-right
+{
+	width:115px;
+	height:40px;
+	float:right;
+}
+p.extension-dl-title
+{
+	width:100%;
+	text-align:left;
+	font-size:12px;
+	font-weight:bold;
+	margin-top:12px;
+}
+a.extension-link
+{
+	display:inline-block;
+	margin:0;
+	padding:0;
+}
+div#extension-mini-body
+{
+	background:#201c2b;
+	padding:20px 0;
+}
+
+/*BARRE DE NAVIGATION*/
+
+nav
+{
+	width:100%;
+	display:inline-block;
+	height:40px;
+	font-color:white;
+	/* font-family:; */
+	background:#6441a4;
+}
+
+nav h1
+{
+    list-style-type: none;
+    margin:0;
+    padding:0;
+    float:left;
+    width:50%;
+    display:inline-block;
+    margin-left:13px;
+    margin-top:2px;
+}
+
+nav ul
+{
+    list-style-type: none;
+    margin:0;
+    padding:0;
+    float:right;
+    width:200px;
+    display:inline-block;
+    height:50px;
+    margin-top:9px;
+    margin-right:30px;
+}
+
+nav ul li
+{
+    list-style-type: none;
+    margin:0;
+    padding:0;
+    width:24.9%;
+    display:inline-block;
+    height:50px;
+    float:left;
+    text-align:center;
+}
+
+nav ul li img
+{
+	max-width:39%;
+}
+a.extension-socials
+{
+	fill:white;
+}
