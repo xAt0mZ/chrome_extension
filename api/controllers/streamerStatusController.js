@@ -1,9 +1,11 @@
 'use strict';
-var background = require('../background');
+var background = require('../background'),
+  config = require('../config');
 
-exports.getStatusByName = function (req, res) {
-  var streamer = req.params.channelName;
-  var status = background.streamers[streamer];
+const twitchBaseURL = 'https://www.twitch.tv/';
+
+exports.getStatus = function (req, res) {
+  var status = background.streamers[config.streamer];
   if (status !== null && status !== undefined)
     res.json(status);
   else

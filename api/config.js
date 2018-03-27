@@ -1,4 +1,4 @@
 module.exports = {
-    streamer: 'armatvhs',
+    streamer: 'kennystream',
     port: 3000
 }

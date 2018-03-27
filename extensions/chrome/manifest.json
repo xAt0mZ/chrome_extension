@@ -7,7 +7,8 @@
     "alarms",
     "notifications",
     "storage",
-    "http://localhost:3000/"
+    "http://localhost:3000/",
+    "https://api.kennystream.tv"
   ],
   "background": {
     "scripts": [

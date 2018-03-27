@@ -1,10 +1,15 @@
 'use strict';
 
-const apiUrl = "http://localhost:3000/status/";
-const streamer = 'armatvhs';
-const streamerUrl = 'https://www.twitch.tv/kennystream';
+const apiUrl = "https://api.kennystream.tv";
 
 function notifyClient(res) {
+
+  chrome.notifications.onClicked.addListener(function () {
+    chrome.tabs.create({ url: res.channel.url });
+    chrome.notifications.clear("streamerLive");
+    setDismiss(true);
+  });
+
   chrome.notifications.create("streamerLive", {
     type: 'basic',
     iconUrl: 'icons/ext_icon48.png',
@@ -23,7 +28,7 @@ function actionsOnStreamerLive(res) {
     chrome.browserAction.setIcon({ path: 'icons/kenz_on.png' })
     getDismiss(function (item) {
       if (item.dismiss == false)
-        notifyClient(item);
+        notifyClient(res);
     });
   } else { // reset dismiss when streamer turns offline
     chrome.browserAction.setIcon({ path: 'icons/kenz_off.png' })
@@ -33,7 +38,7 @@ function actionsOnStreamerLive(res) {
 
 function getStreamerStatus() {
   var xhr = new XMLHttpRequest();
-  xhr.open("GET", apiUrl + streamer, true);
+  xhr.open("GET", apiUrl, true);
   xhr.onreadystatechange = function () {
     if (xhr.readyState == 4) {
       var res = JSON.parse(xhr.responseText);
@@ -54,11 +59,6 @@ chrome.notifications.onClosed.addListener(function () {
   setDismiss(true);
 });
 
-chrome.notifications.onClicked.addListener(function () {
-  chrome.tabs.create({ url: streamerUrl });
-  chrome.notifications.clear("streamerLive");
-  setDismiss(true);
-});
 
 // creates the retrieve timer
 chrome.alarms.create("retrieveStatus", {
@@ -66,16 +66,18 @@ chrome.alarms.create("retrieveStatus", {
   periodInMinutes: 1
 });
 
-
+// on install
 chrome.runtime.onInstalled.addListener(function () {
   getDismiss(function (item) {
     if (item.dismiss === null || item.dismiss === undefined)
       setDismiss(false);
+    chrome.browserAction.setIcon({ path: 'icons/kenz_off.png' });
   })
 })
 
 
 
+// local storage
 function getDismiss(callback) {
   chrome.storage.local.get(['dismiss'], callback);
 }
