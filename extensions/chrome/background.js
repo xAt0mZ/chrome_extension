@@ -1,6 +1,7 @@
 'use strict';
 
-const apiUrl = "https://api.kennystream.tv";
+const apiUrl = "https://api.kennystream.tv/status";
+// const apiUrl = 'http://localhost:3000/status';
 
 function notifyClient(res) {
 
@@ -22,12 +23,11 @@ function notifyClient(res) {
   myAudio.play();
 }
 
-
 function actionsOnStreamerLive(res) {
   if (Object.keys(res).length !== 0) { // streamer is online
     chrome.browserAction.setIcon({ path: 'icons/kenz_on.png' })
     getDismiss(function (item) {
-      if (item.dismiss == false)
+      if (item.dismiss == false && item.allowNotifications)
         notifyClient(res);
     });
   } else { // reset dismiss when streamer turns offline
@@ -55,6 +55,7 @@ chrome.alarms.onAlarm.addListener(function (alarm) {
   }
 });
 
+// on notification closed
 chrome.notifications.onClosed.addListener(function () {
   setDismiss(true);
 });
@@ -71,6 +72,8 @@ chrome.runtime.onInstalled.addListener(function () {
   getDismiss(function (item) {
     if (item.dismiss === null || item.dismiss === undefined)
       setDismiss(false);
+    if (item.allowNotifications === null || item.allowNotifications === undefined)
+      chrome.storage.local.set({ allowNotifications: true });
     chrome.browserAction.setIcon({ path: 'icons/kenz_off.png' });
   })
 })
@@ -79,7 +82,7 @@ chrome.runtime.onInstalled.addListener(function () {
 
 // local storage
 function getDismiss(callback) {
-  chrome.storage.local.get(['dismiss'], callback);
+  chrome.storage.local.get(['dismiss', 'allowNotifications'], callback);
 }
 
 function setDismiss(value) {

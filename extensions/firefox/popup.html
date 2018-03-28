@@ -5,36 +5,24 @@
     <title>KennyStream Popup</title>
     <style>
         .btn {
-            position: relative;
-
-            display: block;
-            margin: 30px auto;
-            padding: 5px;
-
-            overflow: hidden;
-
-            border-width: 0;
+            padding: 6px;
+            margin: 6px 8px 6px 8px;
+            min-width: 88px;
+            border-radius: 3px;
+            font-size: 14px;
+            font-family: 'Roboto';
+            text-align: center;
+            text-decoration: none;
+            border: none;
             outline: none;
-            border-radius: 2px;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
-
-            background-color: #2ecc71;
-            color: #ecf0f1;
-
-            transition: background-color .3s;
-        }
-
-        .btn:hover,
-        .btn:focus {
-            background-color: #27ae60;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+            color: white;
         }
     </style>
 </head>
 
-<body>
-    Notifications status :
-    <p id='notificationsStatus'></p>
-    <button class="btn" id='refreshNotifications'>Reset Notifications</button>
+<body style="background-color: #f0f0f5">
+    <button class="btn" id='refreshNotifications'></button>
     <script src="popup.js"></script>
 </body>
 

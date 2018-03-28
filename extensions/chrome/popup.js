@@ -1,15 +1,22 @@
 'use strict';
 
-function resetNotifications(event) {
-  chrome.storage.local.set({ dismiss: false });
-  window.close();
+function switchAllowNotifications(event) {
+  chrome.storage.local.get(['allowNotifications'], function (item) {
+    chrome.storage.local.set({ allowNotifications: !item.allowNotifications });
+    window.close();
+  });
 }
 
-chrome.storage.local.get(['dismiss'], function (item) {
-  if (item.dismiss)
-    document.getElementById('notificationsStatus').innerHTML = 'Disabled';
-  else
-    document.getElementById('notificationsStatus').innerHTML = 'Enabled';
+chrome.storage.local.get(['allowNotifications'], function (item) {
+  var button = document.getElementById('refreshNotifications');
+  if (item.allowNotifications) {
+    button.style.backgroundColor = '#ff4d4d';
+    button.textContent = 'Disable notifications';
+  }
+  else {
+    button.style.backgroundColor = '#2ecc71';
+    button.textContent = 'Enable notifications';
+  }
 });
 
-document.getElementById('refreshNotifications').addEventListener('click', resetNotifications);
+document.getElementById('refreshNotifications').addEventListener('click', switchAllowNotifications);
